@@ -1,10 +1,12 @@
 import json
 from django.http import HttpResponse
+from django.shortcuts import render
 from alternisApp.lib.queryapi import google_query,bing_query
+
 
 # Main Page
 def index(request):
-    return HttpResponse("Hello, search for alternatives please")
+    return render(request, 'alternis/index.html')
 
 
 # Return Query Results
