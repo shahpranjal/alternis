@@ -1,4 +1,5 @@
 import urllib2
+import urllib
 import xml.etree.ElementTree as ET
 import json
 
@@ -29,3 +30,14 @@ def bing_query(Search):
                 indexOf = rivals.find('vs')
                 competitor.append(rivals[indexOf+2:])
     return competitor
+
+
+def google_image_search(query):
+    query = query.replace(' ', '+')
+    key = "AIzaSyDRuRGJMcgzKKQab30I6wo3LPClH8zCrkQ"
+    cx = "009266886036344981856:9v3ra3nikya"
+    url = "https://www.googleapis.com/customsearch/v1?searchType=image&key=%s&cx=%s&q=%s+logo" % (key, cx, query)
+    jsonVal= json.loads(urllib2.urlopen(url).read())
+    if not (jsonVal and "items" in jsonVal and "link" in jsonVal["items"][0]):
+        return None
+    return jsonVal["items"][0]["link"]
