@@ -1,10 +1,13 @@
 import json
 from django.http import HttpResponse
 from alternisApp.lib.queryapi import google_query,bing_query,correction_query
+from django.shortcuts import render
+from alternisApp.lib.queryapi import google_query,bing_query
+
 
 # Main Page
 def index(request):
-    return HttpResponse("Hello, search for alternatives please")
+    return render(request, 'alternis/index.html')
 
 
 # Return Query Results
@@ -16,7 +19,6 @@ def query(request, Search):
     #return HttpResponse(t.render(c))
     firstSearchResult = correction_query(Search)
     setUnion = list(set().union(*[google_query(Search),bing_query(Search)]))
-    #return  HttpResponse(Search.upper().strip() + " - " + firstSearchResult.upper().strip())
     if (Search.upper().replace(' ', '') == firstSearchResult.upper().replace(' ','')):
         return HttpResponse(json.dumps(setUnion))
     return HttpResponse('Correction ' + firstSearchResult)
