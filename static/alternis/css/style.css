@@ -1,0 +1,33 @@
+html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans';
+}
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #eeeeee;
+}
+.container {
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  height: 100%;
+  border-left: 1px solid #e0e4cc;
+  border-right: 1px solid #e0e4cc;
+}
+#header {
+  margin: 4em 0 20px 0;
+}
+h1 {
+  color: #f0ad4e;
+  font-size: 6em;
+  font-fazmily: 'Open Sans';
+  font-weight: 300;
+}
+form {
+  margin: 0 auto;
+}
+input {
+  margin-bottom: 20px;
+}

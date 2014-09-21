@@ -4,7 +4,7 @@ from alternisApp import views
 
 
 urlpatterns = patterns('',
-    (r'^$', 'alternisApp.views.index'),
+    url(r'^$', views.index),
     url(r'^admin/', include(admin.site.urls)),
-    (r'^alternisApp/(?P<Search>.*)', 'alternisApp.views.query')
+    url(r'^query/', views.query)
 )
