@@ -19,15 +19,14 @@ def google_query(Search):
 # Query Bing API
 def bing_query(Search):
     search_str = Search.replace(' ', '+') + '+vs'
-    competitor = []
     url = 'http://api.bing.com/osjson.aspx?query=' + search_str
     jsonVal= json.loads(urllib2.urlopen(url).read())
+    competitor= []
     if (jsonVal):
         for rivals in jsonVal[1]:
             if ' vs ' in rivals:
                 competitor = list(set().union(*[competitor, extract_vs(rivals)]))
     return competitor
-
 
 #DidYouMean?
 def correction_query(Search):
@@ -35,10 +34,10 @@ def correction_query(Search):
     serialized_data = urllib2.urlopen(url).read()
     tree = ET.fromstring(serialized_data)
     if (tree):
-        return tree[0][0].attrib['data'].split(' ')[0]
+        return tree[0][0].attrib['data'].split(' ')
     return 'Could not find any suggestions'
 
-
+#Image Search
 def google_image_search(query):
     query = query.replace(' ', '+')
     key = "AIzaSyDRuRGJMcgzKKQab30I6wo3LPClH8zCrkQ"
@@ -49,6 +48,7 @@ def google_image_search(query):
         return None
     return jsonVal["items"][0]["link"]
 
+# Split string on vs
 def extract_vs(str):
     return str.split(' vs ')
 
