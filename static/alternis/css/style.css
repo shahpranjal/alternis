@@ -41,12 +41,26 @@ input {
   font-weight: 300;
 }
 /***** result cards *****/
+#results .result-ctn:first-child .result-card {
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+  border-color: #f0ad4e;
+}
 .result-ctn {
   padding: 10px;
   display: inline-block;
 }
 .result-card {
-  border: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  border-right: 2px solid #ccc;
   height: 350px;
-  border-radius: 2px;
+  border-radius: 6px;
+}
+.result-title {
+  font-family: 'Open Sans';
+  text-transform: capitalize;
 }

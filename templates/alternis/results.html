@@ -15,10 +15,9 @@
     </head>
 
     <body>
-        {{  gr }}
         <div class='container'>
             <div id='results-header' class='col-xs-12'>
-                <h1 id='alternis-text'>alternis</h1>
+                <a href="/"><h1 id='alternis-text'>alternis</h1></a>
                 <form action="/query/" method="get" class='col-sm-6 col-sm-offset-3'>
                         <div class='col-xs-10'>
                             {{ form }}
@@ -28,10 +27,15 @@
             </div>
 
             <div id="results">
+                <div class='col-lg-3 col-md-6 result-ctn'>
+                    <div class="result-card">
+                        <h4 class='result-title'>{{ q }}</h4>
+                    </div>
+                </div>
                 {% for result in gr %}
-                    <div class='col-lg-4 col-md-6 result-ctn'>
+                    <div class='col-lg-3 col-md-6 result-ctn'>
                         <div class="result-card">
-                            <h4>{{ result }}</h4>
+                            <h4 class='result-title'>{{ result }}</h4>
                         </div>
                     </div>
                 {% endfor %}
