@@ -44,8 +44,8 @@ def correction_query(Search):
 #Image Search
 def google_image_search(query):
     query = query.replace(' ', '+')
-    key = "AIzaSyDQPYB_peaMAM9c7-69NRkZTuk38S6OMRI"
-    cx = '015189857302432864055:hpklap8kipw'
+    key = "AIzaSyAvsbQQanIT14MfW9xYj2KFGgrVnbTUQgU"
+    cx = '015889211033897736831:jg3zr-vdn6m'
     url = "https://www.googleapis.com/customsearch/v1?searchType=image&key=%s&cx=%s&q=%s+logo" % (key, cx, query)
     jsonVal= json.loads(urllib2.urlopen(url).read())
     if not (jsonVal and "items" in jsonVal and "link" in jsonVal["items"][0]):
@@ -56,8 +56,8 @@ def google_image_search(query):
 #Google Desc + URL Search
 def google_url_search(query):
     query = query.replace(' ', '+')
-    key = "AIzaSyDQPYB_peaMAM9c7-69NRkZTuk38S6OMRI"
-    cx = '015189857302432864055:hpklap8kipw'
+    key = "015889211033897736831:jg3zr-vdn6m"
+    cx = 'AIzaSyAvsbQQanIT14MfW9xYj2KFGgrVnbTUQgU'
     url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s" % (key, cx, query)
     jsonVal= json.loads(urllib2.urlopen(url).read())
     if not (jsonVal and "items" in jsonVal and "link" in jsonVal["items"][0]):
