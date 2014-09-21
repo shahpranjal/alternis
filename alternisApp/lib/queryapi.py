@@ -58,7 +58,7 @@ def google_url_search(query):
     query = query.replace(' ', '+')
     key = "AIzaSyDQPYB_peaMAM9c7-69NRkZTuk38S6OMRI"
     cx = '015189857302432864055:hpklap8kipw'
-    url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s+logo" % (key, cx, query)
+    url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s" % (key, cx, query)
     jsonVal= json.loads(urllib2.urlopen(url).read())
     if not (jsonVal and "items" in jsonVal and "link" in jsonVal["items"][0]):
         return None
