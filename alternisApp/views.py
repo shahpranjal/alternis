@@ -1,7 +1,7 @@
 import json
 from django.http import HttpResponse
 from django.shortcuts import render
-from alternisApp.lib.queryapi import google_query,bing_query, correction_query
+from alternisApp.lib.queryapi import google_query,bing_query, correction_query, wiki_query
 from alternisApp.lib.queryform import QueryForm
 
 
@@ -17,5 +17,25 @@ def query(request):
     form = QueryForm()
     google_results = google_query(q)
     bing_results = bing_query(q)
-    results_list = list(set().union(*[google_results,bing_results]))
+    wik_results = wiki_query(q)
+    results_list = wik_results
+    #results_list = list(set().union(*[google_results,bing_results]))
     return render(request, 'alternis/results.html', { 'form': form, 'q': q, 'gr': results_list})
+
+# def query(request, Search):
+#     # t = loader.get_template('query.html')
+#     # c = Context({
+#     #
+#     # })
+#     #return HttpResponse(t.render(c))
+#     firstSearchResult = ''.join(correction_query(Search))
+#     setUnion = list(set().union(*[google_query(Search),bing_query(Search)]))
+#     if Search.upper().replace(' ', '') == firstSearchResult.upper().replace(' ',''):
+#         return HttpResponse(json.dumps(setUnion))
+#     #return HttpResponse(json.dumps(setUnion))
+#     return HttpResponse('Correction ' + firstSearchResult)
+
+
+#    results_list = list(set().union(*[google_results,bing_results]))
+#    return render(request, 'alternis/results.html', { 'form': form, 'q': q, 'gr': results_list})
+

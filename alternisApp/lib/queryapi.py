@@ -1,6 +1,8 @@
 import urllib2
 import xml.etree.ElementTree as ET
 import json
+import tfidf as tf
+
 
 # Query Google API
 def google_query(Search):
@@ -52,15 +54,19 @@ def google_image_search(query):
 def wiki_query(query):
     query= query.replace(' ', '+')
     query= query.replace(',', '|')
-    url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=Xbox%20360&prop=revisions&rvprop=content' + query
+    page_info = ''
+    url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=' + query + '&prop=revisions&rvprop=content'
     jsonVal= json.loads(urllib2.urlopen(url).read())
     if (jsonVal):
-        for page in jsonVal[0][1]:
-            if "rivisions" in page:
-                page_info = page["revisions"]
+        for page in jsonVal["query"]["pages"]:
+            i = jsonVal["query"]["pages"][page]
+            if "revisions" in i:
+                page_info = i["revisions"]
+    tfobj = tf.TfIdf()
+    input_doc = tfobj.add_input_document(str(page_info))
+    keywords = tfobj.get_idf(str(query))
+    return keywords
     return page_info
-
-
 
 # Split string on vs
 def extract_vs(str):
