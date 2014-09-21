@@ -19,7 +19,9 @@ def query(request, Search):
     #return HttpResponse(t.render(c))
     firstSearchResult = correction_query(Search)
     setUnion = list(set().union(*[google_query(Search),bing_query(Search)]))
-    if (Search.upper().replace(' ', '') == firstSearchResult.upper().replace(' ','')):
+    if Search.upper().replace(' ', '') == firstSearchResult.upper().replace(' ',''):
         return HttpResponse(json.dumps(setUnion))
-    return HttpResponse('Correction ' + firstSearchResult)
+    return HttpResponse(json.dumps(setUnion))
+
+    #return HttpResponse('Correction ' + firstSearchResult)
 

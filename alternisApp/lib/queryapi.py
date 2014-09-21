@@ -39,7 +39,7 @@ def correction_query(Search):
     serialized_data = urllib2.urlopen(url).read()
     tree = ET.fromstring(serialized_data)
     if (tree):
-        return tree[0][0].attrib['data']
+        return tree[0][0].attrib['data'].split(' ')[0]
     return 'Could not find any suggestions'
 
 
