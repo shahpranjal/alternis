@@ -4,6 +4,8 @@
 
 <head>
         <title>alternis.</title>
+
+        <link rel="shortcut icon" type="image/png" href="{%  static 'alternis/favicon.ico' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'alternis/css/bootstrap.min.css' %}" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400,600,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="{% static 'alternis/css/style.css' %}" />
@@ -11,18 +13,15 @@
 
         <script type="text/javascript" src="{% static 'alternis/js/jquery-1.11.1.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'alternis/js/bootstrap.min.js' %}"></script>
-
-    </head>
-
-    <body>
         <div class='container'>
             <div id='header' class='col-xs-12'>
                 <h1 id='alternis-text'>alternis</h1>
+                <span>find alternates for anything</span>
             </div>
 
             <form action="/query/" method="get" class='col-sm-6 col-sm-offset-3'>
                 {{ form }}
-                <button type="submit" class="btn btn-warning">search</button>
+                <button type="submit" class="btn btn-warning">search for alternates</button>
             </form>
         </div>
     </body>
