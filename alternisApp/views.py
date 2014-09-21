@@ -34,4 +34,3 @@ def query(request):
 
 #    results_list = list(set().union(*[google_results,bing_results]))
 #    return render(request, 'alternis/results.html', { 'form': form, 'q': q, 'gr': results_list})
-

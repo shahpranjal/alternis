@@ -30,19 +30,20 @@
                     <div id="results">
                         {% for result in gr %}
                             <div class='col-lg-3 col-md-6 result-ctn'>
-                                <div class="result-card">
-                                    <div class='card-head'>
-                                        <img class="img-responsive" src='http://placehold.it/130x100'/>
+                                <a href="{{  result.link  }}">
+                                    <div class="result-card">
+                                        <div class='card-head'>
+                                            <img class="img-responsive" src='{{ result.img }}'/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class='result-title'>{{ result.title }}</h4>
+                                            <p>Meta descriptions can be any length, but search engines generally truncate snippets
+                                                longer than 160 characters. It is best to keep meta descriptions between 150
+                                                and 160 characters.
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <h4 class='result-title'>{{ result }}</h4>
-                                        <a href="#" class='site-link'>www.{{ result }}.com</a>
-                                        <p>Meta descriptions can be any length, but search engines generally truncate snippets
-                                            longer than 160 characters. It is best to keep meta descriptions between 150
-                                            and 160 characters.
-                                        </p>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         {% endfor %}
                     </div>

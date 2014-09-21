@@ -116,4 +116,3 @@ def get_searched_item(q):
 # Split string on vs
 def extract_vs(str):
     return str.split(' vs ')
-
