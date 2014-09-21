@@ -42,8 +42,8 @@ def correction_query(Search):
 #Image Search
 def google_image_search(query):
     query = query.replace(' ', '+')
-    key = "AIzaSyDRuRGJMcgzKKQab30I6wo3LPClH8zCrkQ"
-    cx = "009266886036344981856:9v3ra3nikya"
+    key = "AIzaSyDQPYB_peaMAM9c7-69NRkZTuk38S6OMRI"
+    cx = '015189857302432864055:hpklap8kipw'
     url = "https://www.googleapis.com/customsearch/v1?searchType=image&key=%s&cx=%s&q=%s+logo" % (key, cx, query)
     jsonVal= json.loads(urllib2.urlopen(url).read())
     if not (jsonVal and "items" in jsonVal and "link" in jsonVal["items"][0]):
@@ -87,7 +87,7 @@ def get_results(q):
         tmp = dict()
         tmp["title"] = item
         tmp["link"] = "www.google.com"
-        #tmp["img"] = google_image_search(item)
+        tmp["img"] = google_image_search(item)
         ret.append(tmp)
     return ret
 
