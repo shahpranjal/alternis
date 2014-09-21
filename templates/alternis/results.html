@@ -15,19 +15,26 @@
     </head>
 
     <body>
+        {{  gr }}
         <div class='container'>
-            <div id='header' class='col-xs-12'>
+            <div id='results-header' class='col-xs-12'>
                 <h1 id='alternis-text'>alternis</h1>
                 <form action="/query/" method="get" class='col-sm-6 col-sm-offset-3'>
-                    {{ form }}
-                    <button type="submit" class="btn btn-lg btn-warning class=">shoot lazers</button>
+                        <div class='col-xs-10'>
+                            {{ form }}
+                        </div>
+                        <button type="submit" class='btn btn-warning col-xs-2'>search</button>
                 </form>
             </div>
 
             <div id="results">
-                {{  gr }}
-                <div id='result-frame'>
-                </div>
+                {% for result in gr %}
+                    <div class='col-lg-4 col-md-6 result-ctn'>
+                        <div class="result-card">
+                            <h4>{{ result }}</h4>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
 
         </div>
