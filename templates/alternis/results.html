@@ -30,17 +30,14 @@
                     <div id="results">
                         {% for result in gr %}
                             <div class='col-lg-3 col-md-6 result-ctn'>
-                                <a href="{{  result.link  }}">
+                                <a href="{{  result.link  }}" target='_blank'>
                                     <div class="result-card">
                                         <div class='card-head'>
                                             <img class="img-responsive" src='{{ result.img }}'/>
                                         </div>
                                         <div class="card-body">
                                             <h4 class='result-title'>{{ result.title }}</h4>
-                                            <p>Meta descriptions can be any length, but search engines generally truncate snippets
-                                                longer than 160 characters. It is best to keep meta descriptions between 150
-                                                and 160 characters.
-                                            </p>
+                                            <p>{{ result.desc }}</p>
                                         </div>
                                     </div>
                                 </a>

@@ -121,7 +121,7 @@ def get_results(q):
         tmp["title"] = item
         tmp["link"] = duckresults["url"]
         tmp["desc"] = duckresults["desc"]
-        #tmp["img"] = google_image_search(item)
+        tmp["img"] = google_image_search(item)
         ret.append(tmp)
     return ret
 
