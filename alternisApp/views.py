@@ -14,7 +14,7 @@ def index(request):
 
 def query(request):
     q = request.GET.get('q','')
-    form = QueryForm()
+    form = QueryForm(initial={'q': q})
     results_list = get_results(q)
     return render(request, 'alternis/results.html', { 'form': form, 'q': q, 'gr': results_list})
 
