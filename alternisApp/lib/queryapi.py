@@ -99,7 +99,7 @@ def normalize(q):
         for index2 in range(index1 + 1, len(q)):
             firstItem = str(q[index1])
             nextItem = str(q[index2])
-            if firstItem in nextItem:
+            if firstItem.upper().replace(' ','') in nextItem.upper().replace(' ',''):
                 results_to_eliminate.append(nextItem)
     return set(q) - set(results_to_eliminate)
 
@@ -111,6 +111,7 @@ def get_searched_item(q):
     jsonVal= json.loads(urllib2.urlopen(url).read())
     index_of_vs_in_search = jsonVal[0].find(" vs")
     return str(jsonVal[0][:index_of_vs_in_search])
+
 
 # Split string on vs
 def extract_vs(str):
