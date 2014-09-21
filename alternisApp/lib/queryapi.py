@@ -48,6 +48,20 @@ def google_image_search(query):
         return None
     return jsonVal["items"][0]["link"]
 
+#Get wikipedia information
+def wiki_query(query):
+    query= query.replace(' ', '+')
+    query= query.replace(',', '|')
+    url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=Xbox%20360&prop=revisions&rvprop=content' + query
+    jsonVal= json.loads(urllib2.urlopen(url).read())
+    if (jsonVal):
+        for rivals in jsonVal[1]:
+            if ' vs ' in rivals:
+                competitor = list(set().union(*[competitor, extract_vs(rivals)]))
+    return competitor
+
+
+
 # Split string on vs
 def extract_vs(str):
     return str.split(' vs ')
