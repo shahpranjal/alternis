@@ -14,10 +14,11 @@ def index(request):
 
 def query(request):
     q = request.GET.get('q','')
+    form = QueryForm()
     google_results = google_query(q)
     bing_results = bing_query(q)
     results_list = list(set().union(*[google_results,bing_results]))
-    return render(request, 'alternis/results.html', { 'q': q, 'gr': results_list})
+    return render(request, 'alternis/results.html', { 'form': form, 'q': q, 'gr': results_list})
 
 # def query(request, Search):
 #     # t = loader.get_template('query.html')

@@ -19,8 +19,15 @@
             <div id='header' class='col-xs-12'>
                 <h1 id='alternis-text'>alternis</h1>
                 <form action="/query/" method="get" class='col-sm-6 col-sm-offset-3'>
-                    <button type="submit" class="btn btn-lg btn-warning">shoot lazers</button>
+                    {{ form }}
+                    <button type="submit" class="btn btn-lg btn-warning class=">shoot lazers</button>
                 </form>
+            </div>
+
+            <div id="results">
+                {{  gr }}
+                <div id='result-frame'>
+                </div>
             </div>
 
         </div>
