@@ -11,6 +11,7 @@ html{
   width: 100%;
   height: 100%;
   font-family: 'Open Sans';
+  overflow: hidden;
 }
 
 body{
@@ -23,19 +24,26 @@ body{
   margin: 0 auto;
   text-align: center;
   background-color: white;
-  height: 100%;
   border-left: 1px solid @color3;
   border-right: 1px solid @color3;
+  height: 100%;
+  overflow: hidden;
 }
 
 #header{
-  margin: 4em 0 20px 0;
+  margin: 10em 0 20px 0;
+}
+
+#results-header{
+  h1{
+    font-size: 3.5em;
+  }
 }
 
 h1{
   color: @bs-orange;
   font-size: 6em;
-  font-fazmily: 'Open Sans';
+  font-family: 'Open Sans';
   font-weight: 300;
 }
 
@@ -45,5 +53,26 @@ form{
 
 input{
   margin-bottom: 20px;
+}
+
+.btn{
+  font-family: 'Open Sans';
+  font-weight: 300;
+}
+
+/***** result cards *****/
+#results{
+}
+
+.result-ctn{
+  padding: 10px;
+  display: inline-block;
+}
+
+
+.result-card{
+  border: 1px solid #ccc;
+  height:350px;
+  border-radius: 2px;
 }
 
