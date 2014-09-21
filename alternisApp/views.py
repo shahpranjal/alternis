@@ -1,8 +1,7 @@
 import json
 from django.http import HttpResponse
-from alternisApp.lib.queryapi import google_query,bing_query,correction_query
 from django.shortcuts import render
-from alternisApp.lib.queryapi import google_query,bing_query
+from alternisApp.lib.queryapi import google_query,bing_query, correction_query
 from alternisApp.lib.queryform import QueryForm
 
 
