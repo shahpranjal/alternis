@@ -9,9 +9,9 @@ def google_query(Search):
     serialized_data = urllib2.urlopen(url).read()
     tree = ET.fromstring(serialized_data)
     competitor = []
-    if (tree):
+    if tree:
         for rivals in tree:
-            rawData = (rivals[0].attrib['data'])
+            rawData = str(rivals[0].attrib['data'])
             if ' vs ' in rawData:
                 competitor = list(set().union(*[competitor, extract_vs(rawData)]))
     return competitor
@@ -20,12 +20,12 @@ def google_query(Search):
 def bing_query(Search):
     search_str = Search.replace(' ', '+') + '+vs'
     url = 'http://api.bing.com/osjson.aspx?query=' + search_str
-    jsonVal= json.loads(urllib2.urlopen(url).read())
+    jsonval=json.loads(urllib2.urlopen(url).read())
     competitor= []
-    if (jsonVal):
-        for rivals in jsonVal[1]:
+    if jsonval:
+        for rivals in jsonval[1]:
             if ' vs ' in rivals:
-                competitor = list(set().union(*[competitor, extract_vs(rivals)]))
+                competitor = list(set().union(*[competitor, extract_vs(str(rivals))]))
     return competitor
 
 #DidYouMean?
@@ -55,10 +55,10 @@ def wiki_query(query):
     url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&titles=Xbox%20360&prop=revisions&rvprop=content' + query
     jsonVal= json.loads(urllib2.urlopen(url).read())
     if (jsonVal):
-        for rivals in jsonVal[1]:
-            if ' vs ' in rivals:
-                competitor = list(set().union(*[competitor, extract_vs(rivals)]))
-    return competitor
+        for page in jsonVal[0][1]:
+            if "rivisions" in page:
+                page_info = page["revisions"]
+    return page_info
 
 
 
