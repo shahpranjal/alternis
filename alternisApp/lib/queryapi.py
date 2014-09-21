@@ -2,6 +2,8 @@ import urllib2
 import xml.etree.ElementTree as ET
 import json
 import tfidf as tf
+import unicodedata
+
 
 
 # Query Google API
@@ -50,6 +52,36 @@ def google_image_search(query):
         return None
     return str(jsonVal["items"][0]["link"])
 
+
+#Google Desc + URL Search
+def google_url_search(query):
+    query = query.replace(' ', '+')
+    key = "AIzaSyDQPYB_peaMAM9c7-69NRkZTuk38S6OMRI"
+    cx = '015189857302432864055:hpklap8kipw'
+    url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s+logo" % (key, cx, query)
+    jsonVal= json.loads(urllib2.urlopen(url).read())
+    if not (jsonVal and "items" in jsonVal and "link" in jsonVal["items"][0]):
+        return None
+    link = jsonVal["items"][0]["link"]
+    snippet = jsonVal["items"][0]["snippet"]
+    return {'desc':snippet.encode('ascii','ignore'),'url':link.encode('ascii','encode')}
+
+
+#DuckDuckGo
+def duckduckgo_search(query):
+    query = query.replace(' ','')
+    url = 'http://api.duckduckgo.com/?q=' + query + '&format=json'
+    site_url = ''
+    abstract = ''
+    jsonVal= json.loads(urllib2.urlopen(url).read())
+    if 'Abstract' in jsonVal:
+        abstract = jsonVal['Abstract']
+    if 'Results' in jsonVal:
+        if 'FirstURL' in jsonVal['Results']:
+            site_url = str(jsonVal['Results'][0]['FirstURL'])
+    return {'desc':str(abstract),'url':str(site_url)}
+
+
 #Get wikipedia information
 def wiki_query(query):
     query= query.replace(' ', '+')
@@ -85,9 +117,11 @@ def get_results(q):
     ret = []
     for item in results_list:
         tmp = dict()
+        duckresults = google_url_search(item)
         tmp["title"] = item
-        tmp["link"] = "www.google.com"
-        tmp["img"] = google_image_search(item)
+        tmp["link"] = duckresults["url"]
+        tmp["desc"] = duckresults["desc"]
+        #tmp["img"] = google_image_search(item)
         ret.append(tmp)
     return ret
 

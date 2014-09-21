@@ -91,7 +91,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
  '/home/mack/PycharmProjects/alternis/static',
- '/home/projects/django/alternis/static'
+ '/Users/shayanmasood/projects/django/alternis/static'
 )
 
 # List of finder classes that know how to find static files in
