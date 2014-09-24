@@ -1,7 +1,7 @@
 import urllib2
 import xml.etree.ElementTree as ET
 import json
-import tfidf as tf
+#import tfidf as tf
 import unicodedata
 
 
