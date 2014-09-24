@@ -24,7 +24,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-__author__ = "Niniane Wang"
+    __author__ = "Niniane Wang"
 __email__ = "niniane at gmail dot com"
 
 import math
