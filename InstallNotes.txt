@@ -1,0 +1,5 @@
+To install Heroku:
+-install venv
+-install django-toolbelt
+creating requirements.txt and Procfile won't be necessary
+https://devcenter.heroku.com/articles/getting-started-with-django
