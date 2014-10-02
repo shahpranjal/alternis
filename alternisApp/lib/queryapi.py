@@ -103,27 +103,31 @@ def wiki_query(query):
 
 # data to send to view
 def get_results(q):
-    searched_item = get_searched_item(q)
-    google_results = google_query(q)
-    bing_results = bing_query(q)
-    set__union = set().union(*[google_results, bing_results])
-    set__union.discard(searched_item)
-    results_list = list(set__union)
-    sorted_list= sorted(results_list,key=len)
-    sorted_list.insert(0, searched_item)
-    sorted_list = normalize(sorted_list)
-    sorted_list.discard(searched_item)
-    results_list = list(sorted_list)
-    results_list.insert(0, searched_item)
     ret = []
-    for item in results_list:
-        tmp = dict()
-        duckresults = google_url_search(item)
-        tmp["title"] = item
-        tmp["link"] = duckresults["url"]
-        tmp["desc"] = duckresults["desc"]
-        #tmp["img"] = google_image_search(item)
-        ret.append(tmp)
+    try:
+        searched_item = get_searched_item(q)
+        google_results = google_query(q)
+        bing_results = bing_query(q)
+        set__union = set().union(*[google_results, bing_results])
+        set__union.discard(searched_item)
+        results_list = list(set__union)
+        sorted_list= sorted(results_list,key=len)
+        sorted_list.insert(0, searched_item)
+        sorted_list = normalize(sorted_list)
+        sorted_list.discard(searched_item)
+        results_list = list(sorted_list)
+        results_list.insert(0, searched_item)
+        ret = []
+        for item in results_list:
+            tmp = dict()
+            duckresults = google_url_search(item)
+            tmp["title"] = item
+            tmp["link"] = duckresults["url"]
+            tmp["desc"] = duckresults["desc"]
+            tmp["img"] = google_image_search(item)
+            ret.append(tmp)
+    except urllib2.HTTPError, err:
+        ret = "Exceeded API calls per day. Please try tomorrow"
     return ret
 
 
